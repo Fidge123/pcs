@@ -3,6 +3,7 @@
 class Pesto
 {
 	public:
+		void setParmesan(int num);
 		void setPinienkerne(int num);
 		void setSalzUndPfeffer(int num);
 		void setKnoblauch(int num);
