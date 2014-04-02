@@ -6,9 +6,12 @@ using namespace std;
 struct Pestobowl{};
 struct Ingredients{};
 
+struct RGB {
+	short R, G, B;
+};
 
-vector<int> getRGBColor(Pesto* myPesto){
-	vector<int> color (3, 255);
+RGB getRGBColor(Pesto* myPesto){
+	RGB color = {255, 255, 0};
 	return color;
 }
 
@@ -54,9 +57,9 @@ void buyIngredients(){
 Pesto createPesto(vector<Ingredients> purchasedStuff, Pesto* myPesto){
 	Pestobowl bowl ();
 	bool texture;
-	vector<int> rgb_mycolor = getRGBColor(myPesto);
-	vector<int> rgb_rosso;
-	vector<int> rgb_verde;
+	RGB myColor = getRGBColor(myPesto);
+	RGB rosso = {255, 0, 0};
+	RGB verde = {0, 255, 0};
 	int servings = getNumberOfServings();
 
 	vector<Ingredients> baseIngredients = myPesto->getBaseIngredients();
@@ -70,11 +73,11 @@ Pesto createPesto(vector<Ingredients> purchasedStuff, Pesto* myPesto){
 	
 	setbaseIngredients(myPesto, servings); 
 	
-	if(rgb_mycolor == rgb_rosso){
+	if(myColor.R == rosso.R){
 		createPestoRosso(myPesto, servings, extras);
 	}
 	
-	if(rgb_mycolor == rgb_verde){
+	if(myColor.G == verde.G){
 		createPestoVerde(myPesto, servings, extras);
 	}
 
