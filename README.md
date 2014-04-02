@@ -1,4 +1,5 @@
-Pesto CheatSheet
+#Pesto CheatSheet
+------------
 
 Das Pesto CheatSheet ist ein Projekt für das Bachelorseminar Projektentwicklung und -management am HPI. Der vorliegende Code ist der Ersatz für das Pestorezept, welches unterstützend zu einer Grafik auf dem CheatSheet abgebildet ist. Der Code ist angelehnt an C++ und wir versuchen möglichst alle Fehler zu beheben. Trotzdem gilt, dass die Lesbarkeit für einen C++ Anfänger wichtiger ist als ein komplett einwandfreier Code. 
 
