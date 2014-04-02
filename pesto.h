@@ -12,8 +12,8 @@ class Pesto
 		void addRucola(int num);
 		void addCashew(int num);
 		void setBasilikum(int num);
-		void addOliven�l(int num);
-		void p�rierePesto();
+		void addOlivenöl(int num);
+		void pürierePesto();
 		bool doesItLookLikePesto();
 		std::vector<Ingredients> getBaseIngredients();
 		//std::vector<Ingredients> getExtraIngredients();
