@@ -1,4 +1,3 @@
-#include <vector>
 #include "pesto.h"
 
 using namespace std;
@@ -23,6 +22,7 @@ struct Ingredients{
 struct RGB {
 	short R, G, B;
 };
+
 
 RGB getRGBColor(Rezept* myPesto){
 	RGB color = {255, 255, 0};
@@ -67,6 +67,7 @@ bool isPurchased(vector<Ingredients> all, vector<Ingredients> purchasedStuff){
 }
 
 void buyIngredients(){
+
 }
 
 Pestoglass createPesto(vector<Ingredients> purchasedStuff, Rezept* myPesto){
