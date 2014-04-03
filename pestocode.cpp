@@ -4,7 +4,10 @@
 using namespace std;
 
 struct Pestobowl{};
-struct Ingredients{};
+
+struct Ingredients{
+	const char* name;
+};
 
 struct RGB {
 	short R, G, B;
@@ -26,24 +29,25 @@ void setbaseIngredients(Pesto* myPesto, int servings){
 	myPesto->setKnoblauch(2 * servings);
 }
 
-void createPestoRosso(Pesto* myPesto, int servings, vector<int> extras){
+void createPestoRosso(Pesto* myPesto, int servings, vector<Ingredients> extras){
 	myPesto->setGetrockneteTomaten(125 * servings);
 	for(auto iterator : extras){
-		switch(iterator){
-			case 0: myPesto->addWalnuss(100 * servings); break;
-			case 1: myPesto->addParmesan(25 * servings); break;
-		}
+		if(iterator.name == "Walnuss")
+			myPesto->addWalnuss(100 * servings);
+		if(iterator.name == "Parmesan")
+			myPesto->addParmesan(25 * servings);
 	}
 }
 
-void createPestoVerde(Pesto* myPesto, int servings, vector<int> extras){
+void createPestoVerde(Pesto* myPesto, int servings, vector<Ingredients> extras){
 	myPesto->setBasilikum(5 * servings);
 	for(auto iterator : extras){
-		switch(iterator){
-			case 0: myPesto->addRucola(50 * servings); break;
-			case 1: myPesto->addCashew(50 * servings); break;
-			case 2: myPesto->addParmesan(25 * servings); break;
-		}
+		if(iterator.name == "Rucola")
+			myPesto->addRucola(50 * servings);
+		if(iterator.name == "Cashew")
+			myPesto->addCashew(50 * servings);
+		if(iterator.name == "Parmesan")
+			myPesto->addParmesan(25 * servings);
 	}
 }
 
@@ -62,24 +66,19 @@ Pesto createPesto(vector<Ingredients> purchasedStuff, Pesto* myPesto){
 	RGB verde = {0, 255, 0};
 	int servings = getNumberOfServings();
 
-	vector<Ingredients> baseIngredients = myPesto->getBaseIngredients();
-	//vector<Ingredients> extras = myPesto->getExtraIngredients();
-	vector<int> extras = myPesto->getExtraIngredients();
-	vector<Ingredients> allIngredients = baseIngredients;
-	allIngredients.insert(allIngredients.end(), extras.begin(), extras.end());
+	vector<Ingredients> base = myPesto->getBaseIngredients();
+	vector<Ingredients> extras = myPesto->getExtraIngredients();
+	vector<Ingredients> all = base;
+	all.insert(all.end(), extras.begin(), extras.end());
 
-	if(!isPurchased(allIngredients, purchasedStuff))
+	if(!isPurchased(all, purchasedStuff))
 		buyIngredients();
 	
 	setbaseIngredients(myPesto, servings); 
-	
-	if(myColor.R == rosso.R){
+	if(myColor.R == rosso.R)
 		createPestoRosso(myPesto, servings, extras);
-	}
-	
-	if(myColor.G == verde.G){
+	if(myColor.G == verde.G)
 		createPestoVerde(myPesto, servings, extras);
-	}
 
 	while(!texture){
 		myPesto->addOlivenöl(3 * servings);

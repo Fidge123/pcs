@@ -17,8 +17,7 @@ class Pesto
 		void pürierePesto();
 		bool doesItLookLikePesto();
 		std::vector<Ingredients> getBaseIngredients();
-		//std::vector<Ingredients> getExtraIngredients();
-		std::vector<int> getExtraIngredients();
+		std::vector<Ingredients> getExtraIngredients();
 
 	private:
 		struct Ingredients {};
