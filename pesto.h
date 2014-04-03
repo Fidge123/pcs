@@ -18,7 +18,9 @@ class Pesto
 		bool doesItLookLikePesto();
 		std::vector<Ingredients> getBaseIngredients();
 		std::vector<Ingredients> getExtraIngredients();
+		Pestoglass konservierePesto();
 
 	private:
 		struct Ingredients {};
+		struct Pestoglass {};
 };
