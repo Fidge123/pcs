@@ -3,7 +3,11 @@
 
 using namespace std;
 
-struct Pestobowl{};
+struct Bowl{
+	void clean(){
+		delete this;
+	}
+};
 
 struct Ingredients{
 	const char* name;
@@ -51,7 +55,7 @@ void createPestoVerde(Pesto* myPesto, int servings, vector<Ingredients> extras){
 	}
 }
 
-bool isPurchased(vector<Ingredients> allIngredients, vector<Ingredients> purchasedStuff){
+bool isPurchased(vector<Ingredients> all, vector<Ingredients> purchasedStuff){
 	return true;
 }
 
@@ -59,7 +63,7 @@ void buyIngredients(){
 }
 
 Pesto createPesto(vector<Ingredients> purchasedStuff, Pesto* myPesto){
-	Pestobowl bowl ();
+	Bowl *bowl = new Bowl();
 	bool texture;
 	RGB myColor = getRGBColor(myPesto);
 	RGB rosso = {255, 0, 0};
@@ -86,6 +90,8 @@ Pesto createPesto(vector<Ingredients> purchasedStuff, Pesto* myPesto){
 		texture = myPesto->doesItLookLikePesto();
 	}
 	
+
+	bowl->clean();
 	// schmeckt am besten zu nudeln oder baguette
 	return *myPesto;
 }
