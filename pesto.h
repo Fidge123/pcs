@@ -1,10 +1,10 @@
 #include <vector>
 
-// Einheiten für bessere Lesbarkeit
+// Einheiten fuer bessere Lesbarkeit
 #define gramm
 #define zehen
-#define blätter
-#define EL // Esslöffel
+#define blaetter
+#define EL // Essloeffel
 
 typedef struct GlassOfPesto{
         // Ein Glass voll Pesto
@@ -17,7 +17,7 @@ typedef struct Rezept{
 } Rezept;
 
 typedef struct Bowl{
-        // Eine Schüssel für das Pesto
+        // Eine Schuessel fuer das Pesto
         void clean(){
                 delete this;
         }
@@ -49,8 +49,8 @@ class Pesto
 		void addRucola(int num, Bowl *bowl);
 		void addCashew(int num, Bowl *bowl);
 		void setBasilikum(int num, Bowl *bowl);
-		void addOlivenöl(int num, Bowl *bowl);
-		void pürierePesto(Bowl *bowl);
+		void addOlivenoel(int num, Bowl *bowl);
+		void puerierePesto(Bowl *bowl);
 		bool doesItLookLikePesto();
 		std::vector<Ingredients> getBaseIngredients();
 		std::vector<Ingredients> getExtraIngredients();

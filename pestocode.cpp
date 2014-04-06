@@ -9,22 +9,22 @@ RGB Pesto::getRGBColor(Rezept* pesto){
 }
 
 int Pesto::getNumberOfServings(){
-	// Platzhalter für die Anzahl der Portionen
-	// Eine Portion reicht normalerweise für 3-4 Mahlzeiten/Personen
+	// Platzhalter fuer die Anzahl der Portionen
+	// Eine Portion reicht normalerweise fuer 3-4 Mahlzeiten/Personen
 	return 1;
 }
 
 bool Pesto::isPurchased(vector<Ingredients> all, vector<Ingredients> purchasedStuff){
-	// Platzhalter für die Überprüfung ob alles gekauft wurde
+	// Platzhalter fuer die Ueberpruefung ob alles gekauft wurde
 	return true;
 }
 
 void Pesto::buyIngredients(){
-	// Platzhalter für den Supermarktbesuch
+	// Platzhalter fuer den Supermarktbesuch
 }
 
 bool Pesto::looksNotLikePesto(){
-	// Eine leere Schüssel ist kein Pesto
+	// Eine leere Schuessel ist kein Pesto
 	return false;
 }
 
@@ -51,7 +51,7 @@ void Pesto::createPestoRosso(Pesto* pesto, int servings, vector<Ingredients> ext
 }
 
 void Pesto::createPestoVerde(Pesto* pesto, int servings, vector<Ingredients> extras, Bowl *bowl){
-	pesto->setBasilikum(5 blätter * servings, bowl);
+	pesto->setBasilikum(5 blaetter * servings, bowl);
 	for(auto iterator : extras){
 		if(iterator.name == "Rucola")
 			pesto->addRucola(50 gramm * servings, bowl);
@@ -87,8 +87,8 @@ GlassOfPesto Pesto::createPesto(vector<Ingredients> purchasedStuff, Rezept* myPe
 		createPestoVerde(pesto, servings, extras, bowl);
 
 	while(!texture){
-		pesto->addOlivenöl(3 EL * servings, bowl);
-		pesto->pürierePesto(bowl);
+		pesto->addOlivenoel(3 EL * servings, bowl);
+		pesto->puerierePesto(bowl);
 		texture = pesto->doesItLookLikePesto();
 	}
 	
