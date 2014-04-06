@@ -18,8 +18,14 @@ typedef struct Ingredients{
 
 typedef struct Rezept{
 	// Ein Rezept mit Zutaten
-	std::vector<Ingredients> getBaseIngredients();
-	std::vector<Ingredients> getExtraIngredients();
+	std::vector<Ingredients> getBaseIngredients(){
+		std::vector<Ingredients> vect;
+		return vect;
+	}
+	std::vector<Ingredients> getExtraIngredients(){
+		std::vector<Ingredients> vect;
+		return vect;
+	}
 } Rezept;
 
 typedef struct Bowl{
@@ -53,7 +59,5 @@ class Pesto
 		void addOlivenoel(int num, Bowl *bowl);
 		void puerierePesto(Bowl *bowl);
 		bool doesItLookLikePesto();
-		std::vector<Ingredients> getBaseIngredients();
-		std::vector<Ingredients> getExtraIngredients();
-		GlassOfPesto konservierePesto();
+		GlassOfPesto* konservierePesto(Pesto* pesto);
 };
