@@ -2,41 +2,45 @@
 
 using namespace std;
 
-RGB getRGBColor(Rezept* pesto){
+RGB Pesto::getRGBColor(Rezept* pesto){
 	// Welche Farbe hat das Pesto laut Rezept?
 	RGB color = {255, 255, 0};
 	return color;
 }
 
-int getNumberOfServings(){
+int Pesto::getNumberOfServings(){
 	// Platzhalter für die Anzahl der Portionen
 	// Eine Portion reicht normalerweise für 3-4 Mahlzeiten/Personen
 	return 1;
 }
 
-bool isPurchased(vector<Ingredients> all, vector<Ingredients> purchasedStuff){
+bool Pesto::isPurchased(vector<Ingredients> all, vector<Ingredients> purchasedStuff){
 	// Platzhalter für die Überprüfung ob alles gekauft wurde
 	return true;
 }
 
-void buyIngredients(){
+void Pesto::buyIngredients(){
 	// Platzhalter für den Supermarktbesuch
 }
 
-bool looksNotLikePesto(){
+bool Pesto::looksNotLikePesto(){
 	// Eine leere Schüssel ist kein Pesto
 	return false;
 }
 
+GlassOfPesto Pesto::konservierePesto(){
+    return new GlassOfPesto();
+}
+
 // the interesting stuff begins here
-void setBaseIngredients(Pesto* pesto, int servings, Bowl *bowl){
+void Pesto::setBaseIngredients(Pesto* pesto, int servings, Bowl *bowl){
 	pesto->setParmesan(75 gramm * servings, bowl);
 	pesto->setPinienkerne(50 gramm * servings, bowl);
 	pesto->setSalzUndPfeffer(servings, bowl);
 	pesto->setKnoblauch(2 zehen * servings, bowl);
 }
 
-void createPestoRosso(Pesto* pesto, int servings, vector<Ingredients> extras, Bowl *bowl){
+void Pesto::createPestoRosso(Pesto* pesto, int servings, vector<Ingredients> extras, Bowl *bowl){
 	pesto->setGetrockneteTomaten(125 gramm * servings, bowl);
 	for(auto iterator : extras){
 		if(iterator.name == "Walnuss")
@@ -46,7 +50,7 @@ void createPestoRosso(Pesto* pesto, int servings, vector<Ingredients> extras, Bo
 	}
 }
 
-void createPestoVerde(Pesto* pesto, int servings, vector<Ingredients> extras, Bowl *bowl){
+void Pesto::createPestoVerde(Pesto* pesto, int servings, vector<Ingredients> extras, Bowl *bowl){
 	pesto->setBasilikum(5 blätter * servings, bowl);
 	for(auto iterator : extras){
 		if(iterator.name == "Rucola")
@@ -58,7 +62,7 @@ void createPestoVerde(Pesto* pesto, int servings, vector<Ingredients> extras, Bo
 	}
 }
 
-GlassOfPesto createPesto(vector<Ingredients> purchasedStuff, Rezept* myPesto){
+GlassOfPesto Pesto::createPesto(vector<Ingredients> purchasedStuff, Rezept* myPesto){
 	Bowl *bowl = new Bowl();
 	bool texture = looksNotLikePesto();
 	RGB myColor = getRGBColor(myPesto);
