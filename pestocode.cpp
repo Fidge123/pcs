@@ -43,58 +43,38 @@ bool looksNotPesto(){
 	return false;
 }
 
-// VS2012 does not support user-defined literals yet
-// feel free to correct this part as I didnt test it
-
-/**
-constexpr Units operator "" _g(int g)
-{
-  return Units{Units::IntIsGramm{}, static_cast<int>(g)};
-}
-
-constexpr Units operator "" _EL(int el)
-{
-  return Units{Units::IntIsEL{}, static_cast<int>(el)};
-}
-
-constexpr Units operator "" _zehen(int z)
-{
-  return Units{Units::IntIsZehen{}, static_cast<int>(z)};
-}
-
-constexpr Units operator "" _blätter(int b)
-{
-  return Units{Units::IntIsBlätter{}, static_cast<int>(b)};
-}
-**/
+#define g
+#define zehen
+#define blätter
+#define EL
 
 // the interesting stuff begins here
 void setBaseIngredients(Pesto* pesto, int servings, Bowl *bowl){
-	pesto->setParmesan(75_g * servings, bowl);
-	pesto->setPinienkerne(50_g * servings, bowl);
+	pesto->setParmesan(75 g * servings, bowl);
+	pesto->setPinienkerne(50 g * servings, bowl);
 	pesto->setSalzUndPfeffer(servings, bowl);
-	pesto->setKnoblauch(2_zehen * servings, bowl);
+	pesto->setKnoblauch(2 zehen * servings, bowl);
 }
 
 void createPestoRosso(Pesto* pesto, int servings, vector<Ingredients> extras, Bowl *bowl){
-	pesto->setGetrockneteTomaten(125_g * servings, bowl);
+	pesto->setGetrockneteTomaten(125 g * servings, bowl);
 	for(auto iterator : extras){
 		if(iterator.name == "Walnuss")
-			pesto->addWalnuss(100_g * servings, bowl);
+			pesto->addWalnuss(100 g * servings, bowl);
 		if(iterator.name == "Parmesan")
-			pesto->addParmesan(25_g * , bowl);
+			pesto->addParmesan(25 g * servings, bowl);
 	}
 }
 
 void createPestoVerde(Pesto* pesto, int servings, vector<Ingredients> extras, Bowl *bowl){
-	pesto->setBasilikum(5_blätter * servings, bowl);
+	pesto->setBasilikum(5 blätter * servings, bowl);
 	for(auto iterator : extras){
 		if(iterator.name == "Rucola")
-			pesto->addRucola(50_g * servings, bowl);
+			pesto->addRucola(50 g * servings, bowl);
 		if(iterator.name == "Cashew")
-			pesto->addCashew(50_g * servings, bowl);
+			pesto->addCashew(50 g * servings, bowl);
 		if(iterator.name == "Parmesan")
-			pesto->addParmesan(25_g * servings, bowl);
+			pesto->addParmesan(25 g * servings, bowl);
 	}
 }
 
@@ -123,7 +103,7 @@ GlassOfPesto createPesto(vector<Ingredients> purchasedStuff, Rezept* myPesto){
 		createPestoVerde(pesto, servings, extras, bowl);
 
 	while(!texture){
-		pesto->addOlivenöl(3_EL * servings);
+		pesto->addOlivenöl(3 EL * servings, bowl);
 		pesto->pürierePesto(bowl);
 		texture = pesto->doesItLookLikePesto();
 	}
