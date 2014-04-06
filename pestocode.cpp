@@ -43,26 +43,26 @@ bool looksNotPesto(){
 	return false;
 }
 
-#define g
+#define gramm
 #define zehen
 #define blätter
 #define EL
 
 // the interesting stuff begins here
 void setBaseIngredients(Pesto* pesto, int servings, Bowl *bowl){
-	pesto->setParmesan(75 g * servings, bowl);
-	pesto->setPinienkerne(50 g * servings, bowl);
+	pesto->setParmesan(75 gramm * servings, bowl);
+	pesto->setPinienkerne(50 gramm * servings, bowl);
 	pesto->setSalzUndPfeffer(servings, bowl);
 	pesto->setKnoblauch(2 zehen * servings, bowl);
 }
 
 void createPestoRosso(Pesto* pesto, int servings, vector<Ingredients> extras, Bowl *bowl){
-	pesto->setGetrockneteTomaten(125 g * servings, bowl);
+	pesto->setGetrockneteTomaten(125 gramm * servings, bowl);
 	for(auto iterator : extras){
 		if(iterator.name == "Walnuss")
-			pesto->addWalnuss(100 g * servings, bowl);
+			pesto->addWalnuss(100 gramm * servings, bowl);
 		if(iterator.name == "Parmesan")
-			pesto->addParmesan(25 g * servings, bowl);
+			pesto->addParmesan(25 gramm * servings, bowl);
 	}
 }
 
@@ -70,11 +70,11 @@ void createPestoVerde(Pesto* pesto, int servings, vector<Ingredients> extras, Bo
 	pesto->setBasilikum(5 blätter * servings, bowl);
 	for(auto iterator : extras){
 		if(iterator.name == "Rucola")
-			pesto->addRucola(50 g * servings, bowl);
+			pesto->addRucola(50 gramm * servings, bowl);
 		if(iterator.name == "Cashew")
-			pesto->addCashew(50 g * servings, bowl);
+			pesto->addCashew(50 gramm * servings, bowl);
 		if(iterator.name == "Parmesan")
-			pesto->addParmesan(25 g * servings, bowl);
+			pesto->addParmesan(25 gramm * servings, bowl);
 	}
 }
 
