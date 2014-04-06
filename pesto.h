@@ -1,5 +1,42 @@
 #include <vector>
 
+// Einheiten fuer bessere Lesbarkeit
+#define gramm
+#define zehen
+#define blaetter
+#define EL // Essloeffel
+
+typedef struct GlassOfPesto{
+	// Ein Glass voll Pesto
+} GlassOfPesto;
+
+
+typedef struct Ingredients{
+	// Eine Zutat mit Namen
+	const char* name;
+} Ingredients;
+
+typedef struct Rezept{
+	// Ein Rezept mit Zutaten
+	std::vector<Ingredients> getBaseIngredients();
+	std::vector<Ingredients> getExtraIngredients();
+} Rezept;
+
+typedef struct Bowl{
+	// Eine Schuessel fuer das Pesto
+	void clean(){
+		delete this;
+	}
+} Bowl;
+
+typedef struct RGB {
+   // Farbe in RGB Werten
+   short R, G, B;
+   bool equals(struct RGB second) const{
+      return ((R == second.R) && (G == second.G) && (B == second.B));
+   }
+} RGB;
+
 class Pesto
 {
 	public:
@@ -13,20 +50,10 @@ class Pesto
 		void addRucola(int num, Bowl *bowl);
 		void addCashew(int num, Bowl *bowl);
 		void setBasilikum(int num, Bowl *bowl);
-		void addOlivenöl(int num, Bowl *bowl);
-		void pürierePesto(Bowl *bowl);
+		void addOlivenoel(int num, Bowl *bowl);
+		void puerierePesto(Bowl *bowl);
 		bool doesItLookLikePesto();
 		std::vector<Ingredients> getBaseIngredients();
 		std::vector<Ingredients> getExtraIngredients();
-		GlassOfPesto konservierePesto(Pesto *pesto);
-
-	private:
-		struct Ingredients {};
-		struct GlassOfPesto {};
-};
-
-GlassOfPesto konservierePesto(Pesto *pesto){
-	delete pesto;
-	GlassOfPesto *glass = new GlassOfPesto();
-	return *glass;
+		GlassOfPesto konservierePesto();
 };
