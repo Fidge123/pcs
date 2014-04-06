@@ -2,33 +2,6 @@
 
 using namespace std;
 
-struct GlassOfPesto{
-	// Ein Glass voll Pesto
-};
-
-struct Rezept{
-	// Ein Rezept mit Zutaten
-	vector<Ingredients> getBaseIngredients();
-	vector<Ingredients> getExtraIngredients();
-};
-
-struct Bowl{
-	// Eine Schüssel für das Pesto
-	void clean(){
-		delete this;
-	}
-};
-
-struct Ingredients{
-	// Eine Zutat mit Namen
-	const char* name;
-};
-
-struct RGB {
-	// Farbe in RGB Werten
-	short R, G, B;
-};
-
 RGB getRGBColor(Rezept* pesto){
 	// Welche Farbe hat das Pesto laut Rezept?
 	RGB color = {255, 255, 0};
@@ -54,12 +27,6 @@ bool looksNotLikePesto(){
 	// Eine leere Schüssel ist kein Pesto
 	return false;
 }
-
-// Einheiten für bessere Lesbarkeit
-#define gramm
-#define zehen
-#define blätter
-#define EL // Esslöffel
 
 // the interesting stuff begins here
 void setBaseIngredients(Pesto* pesto, int servings, Bowl *bowl){
@@ -110,9 +77,9 @@ GlassOfPesto createPesto(vector<Ingredients> purchasedStuff, Rezept* myPesto){
 		buyIngredients();
 	
 	setBaseIngredients(pesto, servings, bowl); 
-	if(myColor.R == rosso.R)
+	if(myColor.equals(rosso))
 		createPestoRosso(pesto, servings, extras, bowl);
-	if(myColor.G == verde.G)
+	if(myColor.equals(verde))
 		createPestoVerde(pesto, servings, extras, bowl);
 
 	while(!texture){
