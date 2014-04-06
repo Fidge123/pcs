@@ -29,7 +29,8 @@ bool Pesto::looksNotLikePesto(){
 }
 
 GlassOfPesto Pesto::konservierePesto(){
-    return new GlassOfPesto();
+    GlassOfPesto* newPestoGlass = new GlassOfPesto;
+    return (*newPestoGlass);
 }
 
 // the interesting stuff begins here

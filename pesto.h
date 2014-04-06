@@ -10,10 +10,16 @@ typedef struct GlassOfPesto{
         // Ein Glass voll Pesto
 } GlassOfPesto;
 
+
+typedef struct Ingredients{
+        // Eine Zutat mit Namen
+        const char* name;
+} Ingredients;
+
 typedef struct Rezept{
         // Ein Rezept mit Zutaten
-        vector<Ingredients> getBaseIngredients();
-        vector<Ingredients> getExtraIngredients();
+        std::vector<Ingredients> getBaseIngredients();
+        std::vector<Ingredients> getExtraIngredients();
 } Rezept;
 
 typedef struct Bowl{
@@ -22,11 +28,6 @@ typedef struct Bowl{
                 delete this;
         }
 } Bowl;
-
-typedef struct Ingredients{
-        // Eine Zutat mit Namen
-        const char* name;
-} Ingredients;
 
 typedef struct RGB {
         // Farbe in RGB Werten
