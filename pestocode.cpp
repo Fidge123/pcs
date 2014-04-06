@@ -121,7 +121,7 @@ GlassOfPesto createPesto(vector<Ingredients> purchasedStuff, Rezept* myPesto){
 		texture = pesto->doesItLookLikePesto();
 	}
 	
-	GlassOfPesto glass = pesto->konservierePesto();
+	GlassOfPesto glass = pesto->konservierePesto(pesto);
 	bowl->clean();
 
 	// schmeckt gut zu Nudeln oder Baguette
