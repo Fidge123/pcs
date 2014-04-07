@@ -2,7 +2,7 @@
 
 using namespace std;
 
-RGB getRGBColor(Rezept* pesto){
+RGB getRGBColor(Recipe* pesto){
 	// Welche Farbe hat das Pesto laut Rezept?
 	RGB color = {255, 255, 0};
 	return color;
@@ -28,13 +28,15 @@ bool looksNotLikePesto(){
 	return false;
 }
 
-GlassOfPesto* Pesto::konservierePesto(Pesto* pesto){
+GlassOfPesto* Pesto::putPestoInAGlass(Pesto* pesto){
+	// Pesto in ein Glass füllen
    delete pesto;
 	GlassOfPesto* newPestoGlass = new GlassOfPesto;
 	return newPestoGlass;
 }
 
-// the interesting stuff begins here
+// CHEATSHEET CODE START
+
 void setBaseIngredients(Pesto* pesto, int servings, Bowl *bowl){
 	pesto->setParmesan(75 gramm * servings, bowl);
 	pesto->setPinienkerne(50 gramm * servings, bowl);
@@ -64,13 +66,15 @@ void createPestoVerde(Pesto* pesto, int servings, vector<Ingredients> extras, Bo
 	}
 }
 
-GlassOfPesto* createPesto(vector<Ingredients> purchasedStuff, Rezept* myPesto){
+GlassOfPesto* createPesto(vector<Ingredients> purchasedStuff, Recipe* myPesto){
 	Bowl* bowl = new Bowl();
+	Blender* blender = new Blender();
 	bool texture = looksNotLikePesto();
+	int servings = getNumberOfServings();
+
 	RGB myColor = getRGBColor(myPesto);
 	RGB rosso = {255, 0, 0};
-	RGB verde = {0, 255, 0};
-	int servings = getNumberOfServings();
+	RGB verde = {0, 255, 0};	
 
 	Pesto* pesto = new Pesto();
 
@@ -90,41 +94,46 @@ GlassOfPesto* createPesto(vector<Ingredients> purchasedStuff, Rezept* myPesto){
 
 	while(!texture){
 		pesto->addOlivenoel(3 EL * servings, bowl);
-		pesto->puerierePesto(bowl);
+		pesto->puerierePesto(blender, bowl);
 		texture = pesto->doesItLookLikePesto();
 	}
 	
-	GlassOfPesto* glass = pesto->konservierePesto(pesto);
+	GlassOfPesto* glass = pesto->putPestoInAGlass(pesto);
 	bowl->clean();
+	blender->clean();
 
 	// schmeckt gut zu Nudeln oder Baguette
 	return glass;
 }
 
-// komplette Version auf http://bit.ly/1gApXLs
+// kompletter Code auf github: http://bit.ly/1gApXLs
 
-void Pesto::setParmesan(int num, Bowl *bowl){}
-void Pesto::setPinienkerne(int num, Bowl *bowl){}
-void Pesto::setSalzUndPfeffer(int num, Bowl *bowl){}
-void Pesto::setKnoblauch(int num, Bowl *bowl){}
-void Pesto::setGetrockneteTomaten(int num, Bowl *bowl){}
-void Pesto::addWalnuss(int num, Bowl *bowl){}
-void Pesto::addParmesan(int num, Bowl *bowl){}
-void Pesto::addRucola(int num, Bowl *bowl){}
-void Pesto::addCashew(int num, Bowl *bowl){}
-void Pesto::setBasilikum(int num, Bowl *bowl){}
-void Pesto::addOlivenoel(int num, Bowl *bowl){}
-void Pesto::puerierePesto(Bowl *bowl){}
+//CHEATSHEET CODE ENDE
+
+// Definition der Pseudofunktionen
+void Pesto::setParmesan(int num, Bowl* bowl){}
+void Pesto::setPinienkerne(int num, Bowl* bowl){}
+void Pesto::setSalzUndPfeffer(int num, Bowl* bowl){}
+void Pesto::setKnoblauch(int num, Bowl* bowl){}
+void Pesto::setGetrockneteTomaten(int num, Bowl* bowl){}
+void Pesto::addWalnuss(int num, Bowl* bowl){}
+void Pesto::addParmesan(int num, Bowl* bowl){}
+void Pesto::addRucola(int num, Bowl* bowl){}
+void Pesto::addCashew(int num, Bowl* bowl){}
+void Pesto::setBasilikum(int num, Bowl* bowl){}
+void Pesto::addOlivenoel(int num, Bowl* bowl){}
+void Pesto::puerierePesto(Blender* blender, Bowl* bowl){}
 bool Pesto::doesItLookLikePesto(){
 	return true;
 }
 
+// Proof of concept main()
 int main(){
 	vector<Ingredients> purchasedStuff;
-	Rezept* myPesto = new Rezept();
+	Recipe* myPesto = new Recipe();
 	GlassOfPesto* glass = createPesto(purchasedStuff, myPesto);
 	delete glass;
-	printf("success\n");
+	printf("I made some Pesto and it was delicious!\n");
 	return 0;
 }
 

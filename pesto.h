@@ -16,7 +16,7 @@ typedef struct Ingredients{
 	const char* name;
 } Ingredients;
 
-typedef struct Rezept{
+typedef struct Recipe{
 	// Ein Rezept mit Zutaten
 	std::vector<Ingredients> getBaseIngredients(){
 		std::vector<Ingredients> vect;
@@ -26,7 +26,7 @@ typedef struct Rezept{
 		std::vector<Ingredients> vect;
 		return vect;
 	}
-} Rezept;
+} Recipe;
 
 typedef struct Bowl{
 	// Eine Schuessel fuer das Pesto
@@ -34,6 +34,13 @@ typedef struct Bowl{
 		delete this;
 	}
 } Bowl;
+
+typedef struct Blender{
+	// Pürierstab
+	void clean(){
+		delete this;
+	}
+} Blender;
 
 typedef struct RGB {
    // Farbe in RGB Werten
@@ -46,18 +53,18 @@ typedef struct RGB {
 class Pesto
 {
 	public:
-		void setParmesan(int num, Bowl *bowl);
-		void setPinienkerne(int num, Bowl *bowl);
-		void setSalzUndPfeffer(int num, Bowl *bowl);
-		void setKnoblauch(int num, Bowl *bowl);
-		void setGetrockneteTomaten(int num, Bowl *bowl);
-		void addWalnuss(int num, Bowl *bowl);
-		void addParmesan(int num, Bowl *bowl);
-		void addRucola(int num, Bowl *bowl);
-		void addCashew(int num, Bowl *bowl);
-		void setBasilikum(int num, Bowl *bowl);
-		void addOlivenoel(int num, Bowl *bowl);
-		void puerierePesto(Bowl *bowl);
+		void setParmesan(int num, Bowl* bowl);
+		void setPinienkerne(int num, Bowl* bowl);
+		void setSalzUndPfeffer(int num, Bowl* bowl);
+		void setKnoblauch(int num, Bowl* bowl);
+		void setGetrockneteTomaten(int num, Bowl* bowl);
+		void addWalnuss(int num, Bowl* bowl);
+		void addParmesan(int num, Bowl* bowl);
+		void addRucola(int num, Bowl* bowl);
+		void addCashew(int num, Bowl* bowl);
+		void setBasilikum(int num, Bowl* bowl);
+		void addOlivenoel(int num, Bowl* bowl);
+		void puerierePesto(Blender* blender, Bowl* bowl);
 		bool doesItLookLikePesto();
-		GlassOfPesto* konservierePesto(Pesto* pesto);
+		GlassOfPesto* putPestoInAGlass(Pesto* pesto);
 };
